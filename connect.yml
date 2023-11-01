@@ -5,13 +5,13 @@
   connection: local
   tasks:
     - name: cluster subscription 
-      shell: az account set --subscription 56aee937-7e96-4525-b43a-0ebc31d869c2 
+      shell: az account set --subscription xxxxxxx 
 
 
 
 
     - name: Download cluster credentials 
-      shell: az aks get-credentials --resource-group AnsibleAKSClusterRG --name AnsibleAKSCluster
+      shell: az aks get-credentials --resource-group xxxxx --name xxxxx 
 
 
 
