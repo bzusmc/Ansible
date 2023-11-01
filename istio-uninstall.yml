@@ -1,0 +1,23 @@
+---
+
+- name: ISTIO Un-Install 
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Un-Install 
+      shell: |
+        helm ls -n istio-system
+        helm delete istio-ingress -n istio-ingress
+        kubectl delete namespace istio-ingress
+        helm delete istiod -n istio-system
+        kubectl delete namespace istio-system 
+      register: output1 
+    - debug: var=output1.stdout_lines
+
+
+    - name: Report 
+      shell: 
+        kubectl get deployments --all-namespaces=true
+      register: output1 
+    - debug: var=output1.stdout_lines
+

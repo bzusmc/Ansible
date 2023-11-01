@@ -1,0 +1,10 @@
+---
+
+- name: Connect Azure Kubernetes Service
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: List all deployment
+      shell: kubectl get deployments --all-namespaces=true
+      register: result
+    - debug: var=result.stdout_lines
