@@ -1,0 +1,25 @@
+---
+
+- name: Connect Azure Kubernetes Service
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: cluster subscription 
+      shell: az account set --subscription 56aee937-7e96-4525-b43a-0ebc31d869c2 
+
+
+
+
+    - name: Download cluster credentials 
+      shell: az aks get-credentials --resource-group AnsibleAKSClusterRG --name AnsibleAKSCluster
+
+
+
+
+
+    - name: List all deployment
+      shell: kubectl get deployments --all-namespaces=true
+      register: result
+
+
+    - debug: var=result.stdout_lines
